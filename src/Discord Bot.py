@@ -67,50 +67,61 @@ async def on_raw_reaction_add(payload):
 
         #checks what the string name is of the reaction
 
-
+        
         if name == 'one':
             
             role = discord.utils.get(guild.roles, name = 'further-maths')
+            await Role(member, role, guild)
             
         elif name == 'two':
             
             role = discord.utils.get(guild.roles, name = 'maths')
+            await Role(member, role, guild)
             
         elif name == 'three':
             
             role = discord.utils.get(guild.roles, name = 'physics')
+            await Role(member, role, guild)
             
         elif name == 'four':
             
             role = discord.utils.get(guild.roles, name = 'computer-science')
+            await Role(member, role, guild)
             
         elif name == 'five':
             
             role = discord.utils.get(guild.roles, name = 'chemistry')
+            await Role(member, role, guild)
             
         elif name == 'six':
             
             role = discord.utils.get(guild.roles, name = 'biology')
+            await Role(member, role, guild)
             
         elif name == 'seven':
             
             role = discord.utils.get(guild.roles, name = 'accounting')
-        
+            await Role(member, role, guild)
+            
         elif name == 'book':
             
             role = discord.utils.get(guild.roles, name = 'a-level')
+            await Role(member, role, guild)
             
         elif name == 'palette':
 
             role = discord.utils.find(lambda g : g.name == 'a-level', guild.roles)
-
+                
             if role not in member.roles:
                 print('yes')
                 role = discord.utils.get(guild.roles, name = 'btec')
+                await Role(member, role, guild)
             else:
-                return await member.send('You can\'t take a-level with btec')
-            
-        if role is not None:
+                return await member.send(member.mention + ' you can\'t take a-level with btec')
+
+@client.command()
+async def Role(member, role, guild):
+    if role is not None:
 
             print(member.roles)
             
@@ -119,8 +130,7 @@ async def on_raw_reaction_add(payload):
                 await member.add_roles(role)
 
                 await member.send(f'Added {role} to your roles in {guild.name}')
-
-
+                
 @client.event
 async def on_raw_reaction_remove(payload):
     
@@ -202,7 +212,7 @@ async def Reset(ctx):
     
     await ctx.channel.send('Resetting')
     await client.close()
-    await client.login('NjgyMjg0MzYwMTcwNjAyNTIx.XlaxSg.xVMW174hGqQ0dAPXZVcU9bd6kgg')
+    await client.login('NjgyOTk1MzMyODE2MDQ0MTEz.XlqxXA.hpcwHOAwYYpvJGVwTI0YHXeaF0g')
 
 @client.command(aliases = ['help'])
 async def Help(ctx):
@@ -216,13 +226,17 @@ async def Help(ctx):
     )
 
     embed.set_author(name = 'Help')
+    embed.add_field(name = '.8ball (question)', value = 'Fortune teller', inline = False)
     embed.add_field(name = '.clear', value = 'Clears messages', inline = False)
     embed.add_field(name = '.kick', value = 'Kicks member', inline = False)
     embed.add_field(name = '.ban', value = 'Bans member', inline = False)
     embed.add_field(name = '.unban', value = 'Unbans a member', inline = False)
+    embed.add_field(name = '.join', value = 'Joins your voice channel', inline = False)
+    embed.add_field(name = '.leave', value = 'Leaves your voice channel', inline = False)
+    embed.add_field(name = '.play', value = 'Plays a song in your channel', inline = False)
 
     await ctx.author.send(f'{author.name}, you called for the cavalry!', embed = embed)
-    await ctx.send(f'{author.name} your message was sent to your DMs!')
+    await ctx.send(author.mention + ' your message was sent to your DMs!')
 
 @client.command(aliases = ['8ball', '8Ball'])
 async def _8Ball(ctx, *, question):
@@ -282,7 +296,7 @@ async def Join(ctx):
     
     if voice_client in client.voice_clients:
         
-            await ctx.send(f'{ctx.author.name} I\'m in your voice channel!')
+            await ctx.send(f'{author.mention} I\'m in your voice channel!')
             
     try:
         
@@ -325,4 +339,4 @@ async def Play(ctx, *, url):
     
     player.start()
 
-client.run('NjgyOTk1MzMyODE2MDQ0MTEz.XllHEg.CXTgA4EEf17t1J3A4oTUQIonVfQ')
+client.run('NjgyOTk1MzMyODE2MDQ0MTEz.XlqxXA.hpcwHOAwYYpvJGVwTI0YHXeaF0g')
