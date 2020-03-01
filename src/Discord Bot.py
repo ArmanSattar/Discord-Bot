@@ -312,13 +312,12 @@ async def Unban(ctx, *, member):
 async def Join(ctx):
 
     #bot joins voice channel
-    
+
     voice_client = ctx.author.guild.voice_client
     
     if voice_client in client.voice_clients:
         
             await ctx.send(f'{author.mention} I\'m in your voice channel!')
-            
     try:
         
         channel = ctx.message.author.voice.channel
@@ -331,8 +330,7 @@ async def Join(ctx):
             await ctx.send('I\'m in your voice channel!')
             
         await ctx.send('You are not in an accessible voice channel!')
-        
-        
+
 @client.command(aliases = ['leave'])
 async def Leave(ctx):
     #bot leaves voice channel
