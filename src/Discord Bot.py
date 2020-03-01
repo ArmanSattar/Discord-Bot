@@ -1,4 +1,3 @@
-import variables
 import discord
 import random
 import youtube_dl
@@ -234,7 +233,7 @@ async def Reset(ctx):
     
     await ctx.channel.send('Resetting')
     await client.close()
-    await client.login('NjgyOTk1MzMyODE2MDQ0MTEz.XlqxXA.hpcwHOAwYYpvJGVwTI0YHXeaF0g')
+    await client.login('NjgyOTk1MzMyODE2MDQ0MTEz.XlumQA.oKiRGpwO1lam97e68oc6LiXqtLI')
 
 @client.command(aliases = ['help'])
 async def Help(ctx):
@@ -265,7 +264,7 @@ async def _8Ball(ctx, *, question):
 
     #awaits a question and then sends a random choice of preset answers
     
-    await ctx.send(f'Question: {question}\n{random.choice(variables.eResponses)}')
+    await ctx.send(f'Question: {question}\n{random.choice(eightBallResponses)}')
 
 @client.command(aliases = ['clear', 'clr'])
 @commands.has_permissions(administrator = True)
@@ -361,4 +360,4 @@ async def Play(ctx, *, url):
     
     player.start()
 
-client.run('NjgyOTk1MzMyODE2MDQ0MTEz.XlqxXA.hpcwHOAwYYpvJGVwTI0YHXeaF0g')
+client.run('NjgyOTk1MzMyODE2MDQ0MTEz.XlumQA.oKiRGpwO1lam97e68oc6LiXqtLI')
